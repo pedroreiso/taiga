@@ -1,6 +1,4 @@
 /*
-* Construído por Lucas R. - KillovSky para Legião Z e distribuido mundialmente em certo ponto.
-* Reprodução, edição e outros estão autorizados MAS SEM REMOVER OS CRÉDITOS do criador deste BOT, resultando na quebra da licença do mesmo, leia mais em http://escolhaumalicenca.com.br/licencas/mit/
 * E desculpe pelos comandos que estão em "inglês" como o "groupinfo", amo o inglês e acho bonito dessa forma, então os programo com nome em inglês mesmo.
 */
 
@@ -135,7 +133,7 @@ module.exports = kconfig = async (kill, message) => {
 				Kl: 'Opa! Isso é apenas meu criador, você não pode acessar.',
 				Ga: 'Apenas Administradores podem usar, então trate de virar um haha!',
 				Gp: 'Desculpe, mas isso é um comando para grupos.',
-				Ac: `Somente grupos que permitem conteúdo +18 podem usar comandos assim, se você é o dono e quer isso, use ${prefix}nsfw enable, ou use no PV.`,
+				Ac: `Desculpe, isso foi removido do meu bot.`,
 				Ba: 'Caro administrador, se quiser que eu use esses comandos, precisa me deixar ser uma ademira!',
 				Na: 'Insira um parametro correto para o comando!',
                 Iv: 'Esse link está correto? Ele me parece errado...'
@@ -275,14 +273,14 @@ module.exports = kconfig = async (kill, message) => {
         if (isGroupMsg && autoSticker && isMedia && isImage && !isCmd) {
             const mediaData = await decryptMedia(message, uaOverride)
             const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-            await kill.sendImageAsSticker(from, imageBase64, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+            await kill.sendImageAsSticker(from, imageBase64, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
         }
 		
         // Auto-sticker de videos
 		if (isGroupMsg && autoSticker && isMedia && isVideo && !isCmd) {
 			const mediaData = await decryptMedia(message, uaOverride)
 			const videoBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-			await kill.sendMp4AsSticker(from, videoBase64, null, { stickerMetadata: true, pack: '🔰 Iris/Legião Z ⚜️', author: '🎁 https://bit.ly/30t4jJV ☆', fps: 30, startTime: '00:00:00.0', endTime : '00:00:05.0', crop: false, loop: 0 })
+			await kill.sendMp4AsSticker(from, videoBase64, null, { stickerMetadata: true, pack: 'by @pedro.reiso', author: 'Taiga-BOT', fps: 30, startTime: '00:00:00.0', endTime : '00:00:05.0', crop: false, loop: 0 })
 		}
 
         // ANTI FLOOD PRIVADO
@@ -315,15 +313,15 @@ module.exports = kconfig = async (kill, message) => {
             if (isMedia && isImage) {
 				const mediaData = await decryptMedia(message, uaOverride)
 				const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-				await kill.sendImageAsSticker(from, imageBase64, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+				await kill.sendImageAsSticker(from, imageBase64, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
             } else if (isQuotedImage) {
                 const mediaData = await decryptMedia(quotedMsg, uaOverride)
 				const imageBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
-				await kill.sendImageAsSticker(from, imageBase64, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+				await kill.sendImageAsSticker(from, imageBase64, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
             } else if (args.length == 1) {
                 const url = args[0]
                 if (isUrl(url)) {
-                    await kill.sendStickerfromUrl(from, url, { method: 'get' }, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+                    await kill.sendStickerfromUrl(from, url, { method: 'get' }, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
                         .catch(err => console.log('Erro: ', err))
                 } else {
 					await kill.reply(from, mess.error.Iv, id)
@@ -337,7 +335,7 @@ module.exports = kconfig = async (kill, message) => {
 		case 'ttp':
 			if (args.length == 0) return kill.reply(from, 'Cadê a frase né?', id)
 			const ttpst = await axios.get(`https://st4rz.herokuapp.com/api/ttp?kata=${body.slice(5)}`)
-			await kill.sendImageAsSticker(from, ttpst.data.result, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+			await kill.sendImageAsSticker(from, ttpst.data.result, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
 			break
 			
 			
@@ -376,7 +374,7 @@ module.exports = kconfig = async (kill, message) => {
                     var outFile = './lib/media/img/noBg.png'
                     var result = await removeBackgroundFromImageBase64({ base64img, apiKey: config.nobg, size: 'auto', type: 'auto', outFile })
                     await fs.writeFile(outFile, result.base64img)
-                    await kill.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+                    await kill.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
 					await kill.reply(from, 'Certifique-se de evitar usar isso quando não precisar,', id)
                 } catch(err) {
                     console.log(err)
@@ -395,7 +393,7 @@ module.exports = kconfig = async (kill, message) => {
                     const encryptMedia = isQuotedGif || isQuotedVideo ? quotedMsg : message
                     const mediaData = await decryptMedia(encryptMedia, uaOverride)
                     const gifSticker = `data:${mimetype};base64,${mediaData.toString('base64')}`
-                    await kill.sendMp4AsSticker(from, gifSticker, null, { stickerMetadata: true, pack: '🔰 Iris/Legião Z ⚜️', author: '🎁 https://bit.ly/30t4jJV ☆', fps: 30, startTime: '00:00:00.0', endTime : '00:00:05.0', crop: false, loop: 0 })
+                    await kill.sendMp4AsSticker(from, gifSticker, null, { stickerMetadata: true, pack: 'by @pedro.reiso', author: 'Taiga-BOT', fps: 30, startTime: '00:00:00.0', endTime : '00:00:05.0', crop: false, loop: 0 })
                 } catch (err) {
                     console.error(err)
                     await kill.reply(from, 'Esse sticker obteve erros, é provavel que seja o seu peso, o maximo é de 1MB.', id)
@@ -456,7 +454,7 @@ module.exports = kconfig = async (kill, message) => {
             const stkm = await fetch(`https://api.fdci.se/sosmed/rep.php?gambar=${body.slice(7)}`)
 			const stimg = await stkm.json()
             let stkfm = stimg[Math.floor(Math.random() * stimg.length) + 1]
-            await kill.sendStickerfromUrl(from, stkfm, { method: 'get' }, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+            await kill.sendStickerfromUrl(from, stkfm, { method: 'get' }, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
 			.catch(() => { kill.reply(from, 'Nenhuma imagem recebida ou servidor offline, tente mais tarde.', id) })
             break
 			
@@ -790,10 +788,10 @@ module.exports = kconfig = async (kill, message) => {
 			
         case 'stalkig':
             if (args.length == 0) return kill.reply(from, 'Defina o nome de um perfil para a busca.', id)
-            const ig = await axios.get(`https://docs-jojo.herokuapp.com/api/stalk?username=${body.slice(9)}`)
+            const ig = await axios.get(`https://st4rz.herokuapp.com/api/stalk?username=${body.slice(9)}`)
 			const stkig = JSON.stringify(ig.data)
 			if (stkig == '{}') return kill.reply(from, 'Usuario não localizado.', id)
-			await kill.sendFileFromUrl(from, `${ig.data.graphql.user.profile_pic_url}`, ``, `✪ Username: ${ig.data.graphql.user.username}\n\n✪ Biografia: ${ig.data.graphql.user.biography}\n\n✪ Seguidores: ${ig.data.graphql.user.edge_followed_by.count}\n\n✪ Seguindo: ${ig.data.graphql.user.edge_follow.count}\n\n✪ Verificada: ${ig.data.graphql.user.is_verified}`, id)
+			await kill.sendFileFromUrl(from, `${ig.data.graphql.user.profile_pic_url}`, ``, `User: ${ig.data.graphql.user.username}\n\nBio: ${ig.data.graphql.user.biography}\n\n✪ Seguidores: ${ig.data.graphql.user.edge_followed_by.count}\n\n✪ Seguindo: ${ig.data.graphql.user.edge_follow.count}\n\n✪ Verificada: ${ig.data.graphql.user.is_verified}`, id)
             break
 			
 			
@@ -804,33 +802,6 @@ module.exports = kconfig = async (kill, message) => {
             translate(animl.data.fact, 'pt').then((result) => kill.reply(from, result, id))
 			break
 			
-			
-		case 'sporn':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			if (args.length == 0) return kill.reply(from, 'Insira um termo de busca!', id)
-            try {
-				const xvide = await axios.get(`https://mnazria.herokuapp.com/api/porn?search=${body.slice(7)}`)
-				const rexvi = xvide.data.result[0]
-				await kill.sendFileFromUrl(from, `${rexvi.image}`, '', `Titulo: ${rexvi.title}\n\nAutor: ${rexvi.actors}\n\nDuração: ${rexvi.duration}\n\nLink: ${rexvi.url}`, id)
-			} catch (error) {
-				await kill.reply(from, 'A busca por pornografia falhou, pode ser que o servidor esteja offline.', id)
-				console.log(error)
-			}
-            break
-			
-			
-		case 'xvideos':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			if (args.length == 0) return kill.reply(from, 'Insira um termo de busca!', id)
-            try {
-				const xv = await axios.get(`https://mnazria.herokuapp.com/api/porndownloadxvideos?url=${body.slice(9)}`)
-				const xvidw = xv.data.mp4
-				await kill.sendFileFromUrl(from, xvidw, 'video.mp4', 'Hmmm safadinho', id)
-			} catch (error) {
-				await kill.reply(from, 'O download da pornografia falhou, pode ser que o servidor esteja offline.', id)
-				console.log(error)
-			}
-            break
 			
 			
 		case 'fb':
@@ -1083,7 +1054,7 @@ module.exports = kconfig = async (kill, message) => {
 			break
 			
 			
-        case 'iris':
+        case 'taiga':
 			const rndrl = fs.readFileSync('./lib/config/reply.txt').toString().split('\n')
 			const repl = rndrl[Math.floor(Math.random() * rndrl.length)]
 			const resmf = repl.replace('%name$', `${name}`).replace('%battery%', `${lvpc}`)
@@ -1122,7 +1093,7 @@ module.exports = kconfig = async (kill, message) => {
 			
         case 'roll':
             const dice = Math.floor(Math.random() * 6) + 1
-            await kill.sendStickerfromUrl(from, 'https://www.random.org/dice/dice' + dice + '.png', { method: 'get' }, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+            await kill.sendStickerfromUrl(from, 'https://www.random.org/dice/dice' + dice + '.png', { method: 'get' }, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
             break
 			
 			
@@ -1172,7 +1143,7 @@ module.exports = kconfig = async (kill, message) => {
 			} else {
 				if (args[0] == 'cara' || args[0] == 'coroa') {
 					if (side == 1) {
-						await kill.sendStickerfromUrl(from, 'https://i.ibb.co/LJjkVK5/heads.png', { method: 'get' }, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+						await kill.sendStickerfromUrl(from, 'https://i.ibb.co/LJjkVK5/heads.png', { method: 'get' }, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
 						if (args[0] == 'cara') {
 							await kill.reply(from, `O resultado foi de "Cara", você ganhou ${pflipxp} XP.`, id)
 							rank.addXp(user, pflipxp, nivel)
@@ -1181,7 +1152,7 @@ module.exports = kconfig = async (kill, message) => {
 							rank.addXp(user, nflipxp, nivel)
 						}
 					} else {
-						await kill.sendStickerfromUrl(from, 'https://i.ibb.co/wNnZ4QD/tails.png', { method: 'get' }, { author: '🎁 https://bit.ly/30t4jJV ☆', pack: '🔰 Iris/Legião Z ⚜️', keepScale: true })
+						await kill.sendStickerfromUrl(from, 'https://i.ibb.co/wNnZ4QD/tails.png', { method: 'get' }, { author: 'Taiga-BOT', pack: 'by @pedro.reiso', keepScale: true })
 						if (args[0] == 'coroa') {
 							await kill.reply(from, `O resultado foi de "Coroa", você ganhou ${pflipxp} XP.`, id)
 							rank.addXp(user, pflipxp, nivel)
@@ -1251,28 +1222,6 @@ module.exports = kconfig = async (kill, message) => {
        case 'ins':
 			if (!isGroupMsg) return kill.reply(from, mess.error.Gp, id)
             feature.addcandidate(kill, message, message.body.slice(5), pollfile, voterslistfile)
-            break
-			
-			
-        case 'nsfw':
-            if (args.length !== 1) return kill.reply(from, 'Defina enable ou disable', id)
-			if (isGroupMsg && isGroupAdmins || isGroupMsg && isOwner) {
-				if (args[0].toLowerCase() == 'enable') {
-					nsfw_.push(groupId)
-					fs.writeFileSync('./lib/config/NSFW.json', JSON.stringify(nsfw_))
-					await kill.reply(from, 'Comandos NSFW ativados neste grupo!', id)
-				} else if (args[0].toLowerCase() == 'disable') {
-					nsfw_.splice(groupId, 1)
-					fs.writeFileSync('./lib/config/NSFW.json', JSON.stringify(nsfw_))
-					await kill.reply(from, 'Comandos NSFW desativamos para este grupo.', id)
-				} else {
-					await kill.reply(from, 'Defina enable ou disable', id)
-				}
-			} else if (isGroupMsg) {
-				await kill.reply(from, mess.error.Ga, id)
-			} else {
-				await kill.reply(from, mess.error.Gp, id)
-			}
             break
 			
 			
@@ -1465,36 +1414,6 @@ module.exports = kconfig = async (kill, message) => {
 			} catch (err) {
 				console.error(err.message)
 				await kill.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ É umas pena, não encontrei nenhum resultado...')
-			}
-			break
-			
-			
-        case 'nh':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			if (args.length == 1) {
-				const nuklir = body.split(' ')[1]
-				await kill.reply(from, mess.wait, id)
-				const cek = await nhentai.exists(nuklir)
-				if (cek == true)  {
-					try {
-						const api = new API()
-						const pic = await api.getBook(nuklir).then(book => {
-							return api.getImageURL(book.cover)
-						})
-						const dojin = await nhentai.getDoujin(nuklir)
-						const { title, details, link } = dojin
-						const { parodies, tags, artists, groups, languages, categories } = await details
-						var teks = `*Titulo* : ${title}\n\n*Parodia de* : ${parodies}\n\n*Tags* : ${tags.join(', ')}\n\n*Artistas* : ${artists.join(', ')}\n\n*Grupos* : ${groups.join(', ')}\n\n*Linguagens* : ${languages.join(', ')}\n\n*Categoria* : ${categories}\n\n*Link* : ${link}`
-						await kill.sendFileFromUrl(from, pic, '', teks + '\n\n' + 'Aguarde, estou enviando o hentai, pode demorar varios minutos dependendo da quantidade de paginas.', id)
-						await kill.sendFileFromUrl(from, `https://nhder.herokuapp.com/download/nhentai/${nuklir}/zip`, 'hentai.zip', '', id)
-					} catch (err) {
-						await kill.reply(from, '[❗] Ops! Deu erro no envio!', id)
-					}
-				} else {
-					await kill.reply(from, '[❗] Aqui diz que não achou resultados...')
-				}
-			} else {
-				await kill.reply(from, 'Insira um código do NHentai no comando para obter resultados.')
 			}
 			break
 			
@@ -1916,28 +1835,6 @@ module.exports = kconfig = async (kill, message) => {
             break
 			
 			
-        case 'porn':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-            const porn = await axios.get('https://meme-api.herokuapp.com/gimme/porn')
-            await kill.sendFileFromUrl(from, `${porn.data.url}`, '', `${porn.data.title}`, id)
-            break
-			
-			
-        case 'lesbian':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-            const lesb = await axios.get('https://meme-api.herokuapp.com/gimme/lesbians')
-            await kill.sendFileFromUrl(from, `${lesb.data.url}`, '', `${lesb.data.title}`, id)
-            break
-			
-			
-			
-        case 'pgay':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-            const gay = await axios.get('https://meme-api.herokuapp.com/gimme/gayporn')
-            await kill.sendFileFromUrl(from, `${gay.data.url}`, '', `${gay.data.title}`, id)
-            break
-			
-			
 		case 'logo':
 			if (args.length == 0) kill.reply(from, 'Coloca um nome ai!', id)
 			await kill.reply(from, mess.wait, id)
@@ -2262,152 +2159,6 @@ module.exports = kconfig = async (kill, message) => {
             break
 			
 			
-        case 'iecchi':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const recchi = ["https://nekos.life/api/v2/img/ero", "https://nekos.life/api/v2/img/erokemo", "https://nekos.life/api/v2/img/erok"];
-    	    const recchic = recchi[Math.floor(Math.random() * recchi.length)];
-			const ecchi = await axios.get(recchic)
-			await kill.sendFileFromUrl(from, ecchi.data.url, id)
-			break
-			
-			
-        case 'tits':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rtits = ["https://meme-api.herokuapp.com/gimme/tits", "https://meme-api.herokuapp.com/gimme/BestTits", "https://meme-api.herokuapp.com/gimme/boobs", "https://meme-api.herokuapp.com/gimme/BiggerThanYouThought", "https://meme-api.herokuapp.com/gimme/smallboobs", "https://meme-api.herokuapp.com/gimme/TinyTits", "https://meme-api.herokuapp.com/gimme/SmallTitsHugeLoad", "https://meme-api.herokuapp.com/gimme/amazingtits"];
-    	    const rtitsc = rtits[Math.floor(Math.random() * rtits.length)];
-			const tits = await axios.get(rtitsc)
-			await kill.sendFileFromUrl(from, `${tits.data.url}`, '', `${tits.data.title}`, id)
-            break
-			
-			
-	    case 'milf':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rmilf = ["https://meme-api.herokuapp.com/gimme/BDSMPics", "https://meme-api.herokuapp.com/gimme/bdsm", "https://meme-api.herokuapp.com/gimme/TeenBDSM"];
-    	    const rmilfc = rmilf[Math.floor(Math.random() * rmilf.length)];
-            const milf1 = await axios.get(rmilfc);
-            await kill.sendFileFromUrl(from, `${milf1.data.url}`, '', `${milf1.data.title}`, id)
-			break
-			
-			
-        case 'bdsm':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rbdsm = ["https://meme-api.herokuapp.com/gimme/BDSMPics", "https://meme-api.herokuapp.com/gimme/bdsm", "https://meme-api.herokuapp.com/gimme/TeenBDSM"];
-    	    const rbdsmc = rbdsm[Math.floor(Math.random() * rbdsm.length)];
-            const bdsm1 = await axios.get(rbdsmc);
-            await kill.sendFileFromUrl(from, `${bdsm1.data.url}`, '', `${bdsm1.data.title}`, id)
-			break
-			
-			
-        case 'ass':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rass = ["https://meme-api.herokuapp.com/gimme/LegalTeens", "https://meme-api.herokuapp.com/gimme/ass", "https://meme-api.herokuapp.com/gimme/bigasses"];
-    	    const rassc = rass[Math.floor(Math.random() * rass.length)];
-            const bowass = await axios.get(rassc);
-            await kill.sendFileFromUrl(from, `${bowass.data.url}`, '', `${bowass.data.title}`, id)
-            break		
-			
-			
-        case 'pussy':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rpussy = ["https://meme-api.herokuapp.com/gimme/pussy", "https://meme-api.herokuapp.com/gimme/ass", "https://meme-api.herokuapp.com/gimme/LegalTeens"];
-    	    const rpussyc = rpussy[Math.floor(Math.random() * rpussy.length)];
-            const bows1 = await axios.get(rpussyc)
-            await kill.sendFileFromUrl(from, `${bows1.data.url}`, '', `${bows1.data.title}`, id)
-            break
-			
-			
-        case 'blowjob':
-        case 'boquete':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rblowj = ["https://nekos.life/api/v2/img/bj", "https://nekos.life/api/v2/img/blowjob"];
-    	    const rblowjc = rblowj[Math.floor(Math.random() * rblowj.length)];
-			const blowjob = await axios.get(rblowjc)
-			await kill.sendFileFromUrl(from, blowjob.data.url, '', '', id)
-			break
-			
-			
-        case 'feet':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rfeet = ["https://nekos.life/api/v2/img/feetg", "https://nekos.life/api/v2/img/erofeet"];
-    	    const rfeetc = rfeet[Math.floor(Math.random() * rfeet.length)];
-			const feet = await axios.get(rfeetc)
-			await kill.sendFileFromUrl(from, feet.data.url, '', '', id)
-			break
-			
-			
-        case 'hard':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			const hard = await axios.get('https://nekos.life/api/v2/img/spank')
-			await kill.sendFileFromUrl(from, hard.data.url, '', '', id)
-			break
-			
-			
-        case 'boobs':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rboobs = ["https://nekos.life/api/v2/img/boobs", "https://nekos.life/api/v2/img/tits"];
-    	    const rboobsc = rboobs[Math.floor(Math.random() * rboobs.length)];
-			const bobis = await axios.get(rboobsc)
-			await kill.sendFileFromUrl(from, bobis.data.url, '', '', id)
-			break
-			
-			
-        case 'lick':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rlick = ["https://nekos.life/api/v2/img/kuni", "https://nekos.life/api/v2/img/les"];
-    	    const rlickc = rlick[Math.floor(Math.random() * rlick.length)];
-			const lick = await axios.get(rlickc)
-			await kill.sendFileFromUrl(from, lick.data.url, '', '', id)
-			break
-			
-			
-        case 'femdom':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rfemdon = ["https://nekos.life/api/v2/img/femdom", "https://nekos.life/api/v2/img/yuri", "https://nekos.life/api/v2/img/eroyuri"];
-    	    const rfemdonc = rfemdon[Math.floor(Math.random() * rfemdon.length)];
-			const femdom = await axios.get(rfemdonc)
-			await kill.sendFileFromUrl(from, femdom.data.url, '', '', id)
-			break
-			
-			
-        case 'futanari':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			const futanari = await axios.get('https://nekos.life/api/v2/img/futanari')
-			await kill.sendFileFromUrl(from, futanari.data.url, '', '', id)
-			break
-			
-			
-        case 'masturb':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rmastub = ["https://nekos.life/api/v2/img/solo", "https://nekos.life/api/v2/img/solog"];
-    	    const rmastubc = rmastub[Math.floor(Math.random() * rmastub.length)];
-			const mstbra = await axios.get(rmastubc)
-			await kill.sendFileFromUrl(from, `${mstbra.data.url}`, '', '', id)
-			break
-			
-			
-        case 'anal':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const ranal = ["https://nekos.life/api/v2/img/cum", "https://nekos.life/api/v2/img/cum_jpg"];
-    	    const ranalc = ranal[Math.floor(Math.random() * ranal.length)];
-			const solog = await axios.get(ranalc)
-			await kill.sendFileFromUrl(from, solog.data.url, '', '', id)
-			break        
-			
-			
-		case 'randomloli':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			const loliz = await axios.get('https://nekos.life/api/v2/img/keta')
-			await kill.sendFileFromUrl(from, loliz.data.url, '', '', id)
-			break
-			
-			
-        case 'nsfwicon':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			const icon = await axios.get('https://nekos.life/api/v2/img/nsfw_avatar')
-			await kill.sendFileFromUrl(from, icon.data.url, '', '', id)
-			break
-			
-			
 		case 'truth':
 			const memean = await axios.get('https://nekos.life/api/v2/img/gecg')
 			await kill.sendFileFromUrl(from, memean.data.url, '', '', id)
@@ -2425,12 +2176,6 @@ module.exports = kconfig = async (kill, message) => {
 			await kill.sendFileFromUrl(from, gasm.data.url, '', '', id)
 			break
 			
-			
-		case 'pezinho':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			const pezin = await axios.get('https://nekos.life/api/v2/img/feet')
-			await kill.sendFileFromUrl(from, pezin.data.url, '', '', id)
-			break
 			
 		// Base Tio das Trevas
 		case 'gadometro':
@@ -2457,50 +2202,10 @@ module.exports = kconfig = async (kill, message) => {
             break
 			
 			
-        case 'ihentai':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const hntai = ["https://nekos.life/api/v2/img/hentai", "https://nekos.life/api/v2/img/pussy", "https://nekos.life/api/v2/img/pussy_jpg", "https://nekos.life/api/v2/img/classic"];
-    	    const hentcc = hntai[Math.floor(Math.random() * hntai.length)];
-			if (double == 1) {
-				const hentai = await randomNimek('hentai')
-				await kill.sendFileFromUrl(from, hentai, ``, 'Ui ui, hentai essa hora?', id)
-			} else if (double == 2) {
-				const hentai1 = await axios.get(hentcc)
-				await kill.sendFileFromUrl(from, hentai1.data.url, ``, 'Espero que curta o hentai e.e', id)
-			}
-            break
-			
-			
         case 'yuri':
             const yuri1 = await randomNimek('yuri')
             await kill.sendFileFromUrl(from, yuri1, ``, ``, id)
             break 
-			
-			
-        case 'randomneko':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-    	    const rnekoi = ["https://nekos.life/api/v2/img/nsfw_neko_gif", "https://nekos.life/api/v2/img/hololewd", "https://nekos.life/api/v2/img/lewdk", "https://nekos.life/api/v2/img/lewdkemo", "https://nekos.life/api/v2/img/eron", "https://nekos.life/api/v2/img/holoero"];
-    	    const rnekoc = rnekoi[Math.floor(Math.random() * rnekoi.length)];
-			if (double == 1) {
-				const nekons = await axios.get(rnekoc)
-				await kill.sendFileFromUrl(from, nekons.data.url, ``, '', id)
-			} else if (double == 2) {
-				const nsfwneko = await randomNimek('nsfw')
-				await kill.sendFileFromUrl(from, nsfwneko, ``, '', id)
-			}
-            break
-			
-			
-        case 'trap':
-			if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-			if (double == 1) {
-				const tapr = await axios.get('https://nekos.life/api/v2/img/trap')
-				await kill.sendFileFromUrl(from, tapr.data.url, '', '', id)
-			} else if (double == 2) {
-				const trap = await randomNimek('trap')
-				await kill.sendFileFromUrl(from, trap, ``, '', id)
-			}
-            break
 			
 			
         case 'randomwall' :
@@ -2668,8 +2373,7 @@ module.exports = kconfig = async (kill, message) => {
 			
 			
         case 'adult':
-            if (isGroupMsg && !isNsfw) return kill.reply(from, mess.error.Ac, id)
-            await kill.sendText(from, adult)
+            await kill.sendImage(from, 'https://scontent-gig2-1.xx.fbcdn.net/v/t1.6435-9/94154063_2573896732825345_7319508434351554560_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=Pexr61UAEHkAX-PDb_P&_nc_ht=scontent-gig2-1.xx&oh=8630ff0f9330523ee5e7ebaa23b4f8f8&oe=6095FA3B')
             break
 			
 			
@@ -2786,13 +2490,13 @@ module.exports = kconfig = async (kill, message) => {
 					const pvmt = body.slice(11) + '@c.us'
 					slce.push(pvmt)
 					fs.writeFileSync('./lib/config/silence.json', JSON.stringify(slce))
-					await kill.reply(from, 'Ele não poderá usar a iris.', id)
+					await kill.reply(from, 'Ele não poderá usar a taiga.', id)
 				} else if (args[0] == 'off') {
 					if (args.length == 0) return kill.reply(from, 'Você deve definir [on e off] e em seguida o número da pessoa sem - ou +.', id)
 					const pvmt = body.slice(11) + '@c.us'
 					slce.splice(pvmt, 1)
 					fs.writeFileSync('./lib/config/silence.json', JSON.stringify(slce))
-					await kill.reply(from, 'Ele poderá usar a iris novamente.', id)
+					await kill.reply(from, 'Ele poderá usar a taiga novamente.', id)
 				} else {
 					await kill.reply(from, 'Você deve definir [on e off] e em seguida o número da pessoa sem - ou +.', id)
 				}
@@ -3093,7 +2797,7 @@ module.exports = kconfig = async (kill, message) => {
 					await kill.sendFileFromUrl(from, reed.data.url, '', reed.data.title, id)
 				} else {
 					if (isGroupMsg && !isNsfw) {
-						await kill.reply(from, 'Esse subreedit contém pornografia, portanto, como esse grupo não permite, eu não mandarei nada.', id)
+						await kill.reply(from, 'Esse subreedit contém pornografia, portanto, eu não mandarei nada.', id)
 					} else {
 						await kill.sendFileFromUrl(from, reed.data.url, '', reed.data.title, id)
 					}

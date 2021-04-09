@@ -2350,7 +2350,7 @@ module.exports = kconfig = async (kill, message) => {
 			
 			
         case 'menu':
-			const othmen = `De outros comandos temos...\n\n*${prefix}Admins* _é para administradores._\n\n*${prefix}Dono* _é apenas para meu dono._\n\n*${prefix}Adult* _é o menu de comandos adultos._\n\n*${prefix}Down* _é o menu de download de músicas e videos._\n\n_Se quiser obter XP, entre em um grupo com ele ou ative o uso dele, converse e use a BOT._`
+			const othmen = `Meus menus são...\n\n*${prefix}Admins* _é para administradores._\n\n*${prefix}Dono* _é apenas para meu dono._\n\n*${prefix}Down* _é o menu de download de músicas e videos._\n\n_Se quiser obter XP, entre em um grupo com ele ou ative o uso dele, converse e use a BOT._`
 			if (isGroupMsg && isxp) {
 				const uzrXp = rank.getXp(user, nivel)
 				const uzrlvl = rank.getLevel(user, nivel)

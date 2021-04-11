@@ -31,7 +31,7 @@ const removeAccents = require('remove-accents')
 // UTILIDADES
 const color = require('./lib/color')
 const { randomNimek, sleep, wall, tulis, ss, isUrl } = require('./lib/functions')
-const { owner, donate, down, help, admins, adult, readme, lang, convh, paises } = require('./lib/help')
+const { owner, donate, down, help, admins, adult, readme, lang, convh, paises, txtimg, utilh, funh, randomh } = require('./lib/help')
 const { stdout } = require('process')
 const bent = require('bent')
 const { doing } = require('./lib/translate.js')
@@ -975,7 +975,7 @@ module.exports = kconfig = async (kill, message) => {
 		case 'resposta':
 			if (args.length == 0) return kill.reply(from, 'Faltou a frase para ser adicionada.', id)
 			fs.appendFile('./lib/config/reply.txt', `\n${body.slice(10)}`)
-			await kill.reply(from, 'Frase adicionada a Íris.', id)
+			await kill.reply(from, 'Frase adicionada a Taiga.', id)
 			break
 
 
@@ -1554,7 +1554,7 @@ module.exports = kconfig = async (kill, message) => {
 				for (let ids of chatz) {
 					var cvk = await kill.getChatById(ids)
 					if (!cvk.isReadOnly) {
-						await kill.sendText(ids, `[Transmissão do dono da Íris]\n\n${msg}`)
+						await kill.sendText(ids, `[Transmissão do dono da Taiga]\n\n${msg}`)
 					} else {
 						console.log("Ignorei um grupo/privado pois estava fechado.")
 					}
@@ -1567,7 +1567,7 @@ module.exports = kconfig = async (kill, message) => {
 					if (!notgps) {
 						var bkgps = await kill.getChatById(bclst)
 						if (!bkgps.isReadOnly) {
-							await kill.sendText(bclst, `[Transmissão do dono da Íris]\n\n${msg}`)
+							await kill.sendText(bclst, `[Transmissão do dono da Taiga]\n\n${msg}`)
 						} else {
 							console.log("Ignorei um grupo/privado pois estava fechado.")
 						}
@@ -1652,7 +1652,7 @@ module.exports = kconfig = async (kill, message) => {
                  var pfp = grouppic
             }
             await kill.sendFileFromUrl(from, pfp, 'group.png', ``, id)
-			await kill.sendTextWithMentions(from, `*${groupname}*\n\n*🌐️ Membros > ${totalMem}*\n\n*💌️ Boas Vindas/Adeus > ${welgrp}*\n\n*🌙 Exclusivos >  ${lzex}*\n\n*🎮 XP > ${xpgp}*\n\n*👤 Anti-Fakes > ${fakegp}*\n\n*🔏 Black-List > ${bklistgp}*\n\n*🔕 Silenciado > ${slcegp}*\n\n*🎥 Auto-Stickers > ${autostk}*\n\n*🔞 Contéudo adulto > ${ngrp}*\n\n*📃️ Descrição ↓*\n ${desc}\n\n*🌙 Dono >* @${gpOwner}\n\n*☀️ Administradores ↓*\n${admgp}`)
+			await kill.sendTextWithMentions(from, `*${groupname}*\n\n*🌐️ Membros > ${totalMem}*\n\n*💌️ Boas Vindas/Adeus > ${welgrp}*\n\n*🌙 Exclusivos >  ${lzex}*\n\n*🎮 XP > ${xpgp}*\n\n*👤 Anti-Fakes > ${fakegp}*\n\n*🔏 Black-List > ${bklistgp}*\n\n*🔕 Silenciado > ${slcegp}*\n\n*🎥 Auto-Stickers > ${autostk}*\n\n*📃️ Descrição ↓*\n ${desc}\n\n*🌙 Dono >* @${gpOwner}\n\n*☀️ Administradores ↓*\n${admgp}`)
 			break
 
 
@@ -1693,30 +1693,31 @@ module.exports = kconfig = async (kill, message) => {
 			break
 
 
-        case 'everyone':
-			if (isGroupMsg && isGroupAdmins || isGroupMsg && isOwner) {
-				const groupMem = await kill.getGroupMembers(groupId)
-				let hehe = `═✪〘 Olá! Todos marcados! 〙✪═\n═✪〘 Assunto: ${body.slice(10)} 〙✪═\n\n`
-				for (let i = 0; i < groupMem.length; i++) {
-					hehe += '- '
-					hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
-				}
-				hehe += '\n═✪〘 Obrigada & Amo vocês <3 〙✪═'
-				await sleep(2000)
-				await kill.sendTextWithMentions(from, hehe)
-			} else if (isGroupMsg) {
-				await kill.reply(from, 'Desculpe, somente os administradores podem usar esse comando...', id)
-			} else {
-				await kill.reply(from, 'Esse comando apenas pode ser usado em grupos!', id)
+			case 'everyone':
+		if (isGroupMsg && isGroupAdmins || isGroupMsg && isOwner) {
+			const groupMem = await kill.getGroupMembers(groupId)
+			var groupname = name
+			let hehe = `— marcação on ${groupname} 🌦️\nassunto: ${body.slice(10)}\n\n`
+			for (let i = 0; i < groupMem.length; i++) {
+				hehe += ':: '
+				hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
 			}
-            break
+			hehe += '\ntaiga-bot — by @pedroh790'
+			await sleep(2000)
+			await kill.sendTextWithMentions(from, hehe, id)
+		} else if (isGroupMsg) {
+			await kill.reply(from, 'Desculpe, somente os administradores podem usar esse comando...', id)
+		} else {
+			await kill.reply(from, 'Esse comando apenas pode ser usado em grupos!', id)
+		}
+					break
 
 
         case 'random':
 			if (!isGroupMsg) return kill.reply(from, mess.error.Gp, id)
             const memran = await kill.getGroupMembers(groupId)
             const randme = memran[Math.floor(Math.random() * memran.length)]
-            await kill.sendTextWithMentions(from, `═✪〘 Você foi escolhido! 〙✪═ \n\n @${randme.id.replace(/@c.us/g, '')}\n\n═✪〘 Para: ${body.slice(8)} 〙✪═`)
+            await kill.sendTextWithMentions(from, `você foi escolhido!\n\n @${randme.id.replace(/@c.us/g, '')}\n\npara: ${body.slice(8)} `)
             await sleep(2000)
             break
 
@@ -2354,17 +2355,19 @@ module.exports = kconfig = async (kill, message) => {
 					break
 
         case 'menu':
-			const othmen = `Meus comandos estão divididos em menus, meus menus são...\n\n*${prefix}Admins* _é para administradores._\n\n*${prefix}Dono* _é apenas para meu dono._\n\n*${prefix}Down* _é o menu de download de músicas e videos._\n\n_Se quiser obter XP, entre em um grupo com ele ou ative o uso dele, converse e use a BOT._`
+			const othmen = `Meus comandos estão divididos em menus, meus menus são...\n\n😎 *${prefix}Admins* _é para administradores._\n\n⬇️ *${prefix}Down* _é o menu de download de músicas e videos._\n\n🎡 *${prefix}Fun* _é o menu de diversão (em grupos e etc)._\n\n🔀 *${prefix}Randomm* _é o menu de imagens (cachorros, gatos, macacos) e frases/curiosidades._\n\n🖼️ *${prefix}Txtimg* _menu de texto pra imagem, onde você manda o que quer e eu envio uma imagem com aquilo escrito._\n\n*${prefix}Util* _ utilidades no geral._\n\n_Se quiser obter XP, entre em um grupo com ele ou ative o uso dele, converse e use a BOT._`
 			if (isGroupMsg && isxp) {
 				const uzrXp = rank.getXp(user, nivel)
 				const uzrlvl = rank.getLevel(user, nivel)
 				const uneedxp = 5 * Math.pow(uzrlvl, 2) + 50 * uzrlvl + 100
 				const utinfo = `======================\n_Olá_ *"${pushname}"*!\n_Dia:_ *${time}*\n_Meu Ping:_ *${processTime(t, moment())}* _segundos_\n_Level:_ *${uzrlvl}*\nXP: *${uzrXp}* / *${uneedxp}*\nPatente: *${patente}*\n======================\n\n`
-				await kill.sendText(from, utinfo + help)
+				await kill.sendText(from, utinfo)
 				await kill.sendText(from, othmen)
+				await kill.sendText(from, '*em breve:*\n\n	-filmes no drive\n\n	-utilidades pra vv\n\n	-como fazer filtros para instagram pelo celular')
 			} else {
-				await kill.sendText(from, help)
+				await kill.sendText(from, utinfo)
 				await kill.sendText(from, othmen)
+				await kill.sendText(from, '*em breve:*\n\n	-filmes no drive\n\n	-utilidades pra vv\n\n	-como fazer filtros para instagram pelo celular')
 			}
             break
 
@@ -2374,6 +2377,19 @@ module.exports = kconfig = async (kill, message) => {
             if (!isGroupAdmins) return kill.reply(from, mess.error.Ga, id)
             await kill.sendText(from, admins)
             break
+
+				case 'txtimg':
+		        await kill.sendText(from, txtimg)
+		        break
+				case 'util':
+						await kill.sendText(from, utilh)
+						break
+				case 'fun':
+		        await kill.sendText(from, funh)
+		        break
+				case 'randomm':
+						await kill.sendText(from, randomh)
+						break
 
 
         case 'adult':
@@ -2571,7 +2587,7 @@ module.exports = kconfig = async (kill, message) => {
 
 
 		case 'help':
-			if (args.length == 0) return kill.reply(from, 'Defina seu problema a ser enviado ao grupo responsável pela Íris.', id)
+			if (args.length == 0) return kill.reply(from, 'Defina seu problema a ser enviado ao grupo responsável pela Taiga.', id)
 			const hpgp = groupId.replace('@g.us', '')
 			const hppv = user.replace('@c.us', '')
 			if (isGroupMsg) {
@@ -2987,7 +3003,7 @@ module.exports = kconfig = async (kill, message) => {
         }
     } catch (err) {
         console.log(color('[ERRO]', 'red'), err)
-		//await kill.sendText(ownerNumber, `_Olá, caro dono(a)!_\n_Obtive erros ao executar o comando..._\n\n*${prefix}${body.slice(1)}*\n\n_Peço que corrija por gentileza para podermos usar sem preocupações._\n_Agradecida, Íris._\n\n_Qual erro?_\n\n*${err}*`)
+		//await kill.sendText(ownerNumber, `_Olá, caro dono(a)!_\n_Obtive erros ao executar o comando..._\n\n*${prefix}${body.slice(1)}*\n\n_Peço que corrija por gentileza para podermos usar sem preocupações._\n_Agradecida, Taiga._\n\n_Qual erro?_\n\n*${err}*`)
 		await kill.reply(from, `⚠️ _Ops, por algum motivo obtive erros com esse comando, por favor evite usa-lo novamente e se possível contate os responsáveis com o comando ${prefix}help._`, id)
     }
 }

@@ -125,15 +125,15 @@ module.exports = kconfig = async (kill, message) => {
 		const errorImg = 'https://i.ibb.co/jRCpLfn/user.png'
 
         const mess = {
-            wait: 'Entendido amore! Só esperar um pouquinho para podermos conversar de novo ok?',
+            wait: 'já to fazendo, viu? só esperar um pouquinho para podermos conversar',
             error: {
-                St: `Você usou errado haha!\nPara usar isso, envie ou marque uma foto com essa mensagem, se for um gif, use o comando ${prefix}gif.`,
-                Ki: 'Para remover administradores, você precisa primeiro remover o ADM deles.',
-                Ad: 'Erros! Não pude adicionar, pode ser por limitação de adicionar ou erros meus.',
-				Kl: 'Opa! Isso é apenas meu criador, você não pode acessar.',
-				Ga: 'Apenas Administradores podem usar, então trate de virar um haha!',
-				Gp: 'Desculpe, mas isso é um comando para grupos.',
-				Ac: `Desculpe, isso foi removido do meu bot.`,
+                St: `você usou errado haha!\npara usar isso, envie ou marque uma foto com essa mensagem, se for um gif, use o comando ${prefix}gif.`,
+                Ki: 'para remover administradores, você precisa primeiro remover o ADM deles.',
+                Ad: 'erros! não pude adicionar, pode ser por limitação de adicionar ou erros meus.',
+				Kl: 'opa! isso é apenas meu criador, você não pode acessar.',
+				Ga: 'apenas administradores podem usar, então trate de virar um haha!',
+				Gp: 'desculpe, mas isso é um comando para grupos.',
+				Ac: `desculpe, isso foi removido do meu bot.`,
 				Ba: 'Caro administrador, se quiser que eu use esses comandos, precisa me deixar ser uma ademira!',
 				Na: 'Insira um parametro correto para o comando!',
                 Iv: 'Esse link está correto? Ele me parece errado...'
@@ -293,13 +293,13 @@ module.exports = kconfig = async (kill, message) => {
         if (!isCmd && !isGroupMsg) { return console.log('> MENSAGEM AS', color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname)) }
 
 		// MENSAGEM GP
-        if (!isCmd && isGroupMsg) { return console.log('> MENSAGEM AS', color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname), 'em', color(name || formattedTitle)) }
+        if (!isCmd && isGroupMsg) { return console.log('> MENSAGEM', color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname), 'em', color(name || formattedTitle)) }
 
 		// COMANDOS
-        if (isCmd && !isGroupMsg) { console.log(color(`> COMANDO "${command} [${args.length}]" AS`), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname)) }
+        if (isCmd && !isGroupMsg) { console.log(color(`> COMANDO "${command} [${args.length}]"`), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname)) }
 
 		// COMANDOS GP
-        if (isCmd && isGroupMsg) { console.log(color(`> COMANDO "${command} [${args.length}]" AS`), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname), 'em', color(name || formattedTitle)) }
+        if (isCmd && isGroupMsg) { console.log(color(`> COMANDO "${command} [${args.length}]"`), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'de', color(pushname), 'em', color(name || formattedTitle)) }
 
         // Impede SPAM
         if (isCmd && !isOwner) msgFilter.addFilter(from)
@@ -361,7 +361,7 @@ module.exports = kconfig = async (kill, message) => {
 
 		// LEMBRE-SE, REMOVER CRÈDITO È CRIME E PROIBIDO
 		case 'about':
-			await kill.sendFile(from, './lib/media/img/iris.png', 'iris.png', sobre, id)
+			await kill.sendFile(from, 'https://i.imgur.com/2p7XLPb.png', 'iris.png', sobre, id)
 			break
 
 
@@ -631,9 +631,9 @@ module.exports = kconfig = async (kill, message) => {
 			break
 
 		 // LEMBRE-SE, REMOVER CREDITO E CRIME E PROIBIDO
-		case 'legiao':
+		case 'teste':
 			if (isGroupMsg) return kill.reply(from, 'Interessado pelo grupo da pessoa que me criou? Use isso no PV!', id)
-			await kill.sendLinkWithAutoPreview(from, 'https://chat.whatsapp.com/H53MdwhtnRf7TGX1VJ2Jje', '', id)
+			await kill.sendLinkWithAutoPreview(from, 'https://instagram.com/pedro.reiso', '', id)
 			break
 
 
@@ -737,7 +737,7 @@ module.exports = kconfig = async (kill, message) => {
             const linp = await fetch(`https://api.fdci.se/sosmed/rep.php?gambar=${body.slice(7)}`)
 			const pint = await linp.json()
             let erest = pint[Math.floor(Math.random() * pint.length)]
-            await kill.sendFileFromUrl(from, erest, '', 'Havia muitas mas espero que curta a imagem que eu escolhi ^^!', id)
+            await kill.sendFileFromUrl(from, erest, '', 'tinha um tanto lá, espero que você goste da que eu escolhi :)', id)
 			.catch(() => { kill.reply(from, 'Nenhuma imagem recebida ou servidor offline, tente mais tarde.', id) })
             break
 
@@ -815,7 +815,6 @@ module.exports = kconfig = async (kill, message) => {
 				console.log(error)
 			}
             break
-
 
         case 'mp3':
             if (args.length == 0) return kill.reply(from, 'Falta definir o Link para isso!', id)
@@ -1554,7 +1553,7 @@ module.exports = kconfig = async (kill, message) => {
 				for (let ids of chatz) {
 					var cvk = await kill.getChatById(ids)
 					if (!cvk.isReadOnly) {
-						await kill.sendText(ids, `[Transmissão do dono da Taiga]\n\n${msg}`)
+						await kill.sendText(ids, `[Transmissão do dono da Taiga]\n\n${msg}\n\n@pedro.reiso`)
 					} else {
 						console.log("Ignorei um grupo/privado pois estava fechado.")
 					}
@@ -1567,7 +1566,7 @@ module.exports = kconfig = async (kill, message) => {
 					if (!notgps) {
 						var bkgps = await kill.getChatById(bclst)
 						if (!bkgps.isReadOnly) {
-							await kill.sendText(bclst, `[Transmissão do dono da Taiga]\n\n${msg}`)
+							await kill.sendText(bclst, `[Transmissão do dono da Taiga]\n\n${msg}\n\n@pedro.reiso`)
 						} else {
 							console.log("Ignorei um grupo/privado pois estava fechado.")
 						}
@@ -1702,7 +1701,7 @@ module.exports = kconfig = async (kill, message) => {
 				hehe += ':: '
 				hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
 			}
-			hehe += '\ntaiga-bot — by @pedroh790'
+			hehe += '\ntaiga-bot — by @pedro.reiso'
 			await sleep(2000)
 			await kill.sendTextWithMentions(from, hehe, id)
 		} else if (isGroupMsg) {
@@ -2351,26 +2350,61 @@ module.exports = kconfig = async (kill, message) => {
 
 			case 'wa.me':
 			case 'wame':
-					await kill.reply(from, `*Esse é o Link do seu número do WhatsApp, ${pushname}*\n\n*wa.me/${sender.id.replace(/[@c.us]/g, '')}*\n\n*ou*\n\n*api.whatsapp.com/send?phone=${sender.id.replace(/[@c.us]/g, '')}*`, id)
+					await kill.reply(from, `*esse é o link do seu número do WhatsApp, ${pushname}*\n\n*wa.me/${sender.id.replace(/[@c.us]/g, '')}*\n\n*ou*\n\n*api.whatsapp.com/send?phone=${sender.id.replace(/[@c.us]/g, '')}*`, id)
 					break
 
         case 'menu':
-			const othmen = `Meus comandos estão divididos em menus, meus menus são...\n\n😎 *${prefix}Admins* _é para administradores._\n\n⬇️ *${prefix}Down* _é o menu de download de músicas e videos._\n\n🎡 *${prefix}Fun* _é o menu de diversão (em grupos e etc)._\n\n🔀 *${prefix}Randomm* _é o menu de imagens (cachorros, gatos, macacos) e frases/curiosidades._\n\n🖼️ *${prefix}Txtimg* _menu de texto pra imagem, onde você manda o que quer e eu envio uma imagem com aquilo escrito._\n\n*${prefix}Util* _ utilidades no geral._\n\n_Se quiser obter XP, entre em um grupo com ele ou ative o uso dele, converse e use a BOT._`
+			const othmen = `— 𝐌𝐄𝐍𝐔 𝐆𝐄𝐑𝐀𝐋 𝐓𝐀𝐈𝐆𝐀. 🍷𖤩ฺฺฺ\n\n— os comandos são divididos em vários menus, cada um com sua função, sendo eles::\n\n\n🎡꒰ */admins* menu apenas para administradores do grupo.\n\n🍇꒰ */down* menu de download de músicas e vídeos.\n\n🎡꒰ */filmes* menu de filmes disponíveis (direto ao drive).\n\n🍇꒰ */fun* o menu de diversão, com comandos diversos e mais divertidos para grupos, etc.\n\n🎡꒰ */randomm* menu de imagens aleatórias (cachorros, gatos, macacos) frases ou coriosidades.\n\n🍇꒰ */txtimg* menu de textos na imagem, você me manda o que quer por escrito e eu lhe envio uma imagem com aquilo escrito.\n\n🎡꒰ */util* menu de utilidades no geral.\n\nem */changelog* estão todas as minhas mudanças desde a última versão.\n\n— taiga.`
 			if (isGroupMsg && isxp) {
 				const uzrXp = rank.getXp(user, nivel)
 				const uzrlvl = rank.getLevel(user, nivel)
 				const uneedxp = 5 * Math.pow(uzrlvl, 2) + 50 * uzrlvl + 100
-				const utinfo = `======================\n_Olá_ *"${pushname}"*!\n_Dia:_ *${time}*\n_Meu Ping:_ *${processTime(t, moment())}* _segundos_\n_Level:_ *${uzrlvl}*\nXP: *${uzrXp}* / *${uneedxp}*\nPatente: *${patente}*\n======================\n\n`
+				const utinfo = `_oiii,_ "${pushname}", tudo bom? sou a taiga e vou te explicar meu funcionamento:\n\n_meu ping:_ *${processTime(t, moment())}* _segundos_\n_level:_ *${uzrlvl}*\nXP: *${uzrXp}* / *${uneedxp}*\npatente: *${patente}*`
 				await kill.sendText(from, utinfo)
 				await kill.sendText(from, othmen)
-				await kill.sendText(from, '*em breve:*\n\n	-filmes no drive\n\n	-utilidades pra vv\n\n	-como fazer filtros para instagram pelo celular')
 			} else {
+				const utinfo = `_oiii,_ "${pushname}", tudo bom? sou a taiga e vou te explicar meu funcionamento:\n\n_meu ping:_ *${processTime(t, moment())}* _segundos_`
 				await kill.sendText(from, utinfo)
 				await kill.sendText(from, othmen)
-				await kill.sendText(from, '*em breve:*\n\n	-filmes no drive\n\n	-utilidades pra vv\n\n	-como fazer filtros para instagram pelo celular')
 			}
             break
 
+						case 'neyday':
+						await kill.sendImage(from, 'https://pbs.twimg.com/media/E0DqsssXIAQSV88?format=jpg&name=900x900', '', 'DICAS PRA AJUDAR O NEY HOJE\n-Evite respirar muito, Neymar precisa de oxigênio.\n-Evite usar energia elétrica, o Neymar precisa carregar a jbl.\n-Evite usar água, o Neymar precisa lavar o cabelo pra fazer o moicano.\n-Evite outras fotos de perfil, Neymarismo prevalece.\n#neyday')
+break
+
+
+						case 'bct':
+						case 'buceta':
+						case 'rola':
+						await kill.sendImageAsSticker(from, 'https://scontent-gig2-1.xx.fbcdn.net/v/t1.6435-9/94154063_2573896732825345_7319508434351554560_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=Pexr61UAEHkAX-PDb_P&_nc_ht=scontent-gig2-1.xx&oh=8630ff0f9330523ee5e7ebaa23b4f8f8&oe=6095FA3B', { author: 'KKKKKKKKKKKKKKKAIAI', pack: 'by @pedro.reiso', keepScale: true })
+						break
+
+						case 'pau':
+						case 'xvideos':
+						case 'sexo':
+						await kill.sendImageAsSticker(from, 'https://scontent-gig2-1.xx.fbcdn.net/v/t1.6435-9/94154063_2573896732825345_7319508434351554560_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=Pexr61UAEHkAX-PDb_P&_nc_ht=scontent-gig2-1.xx&oh=8630ff0f9330523ee5e7ebaa23b4f8f8&oe=6095FA3B', { author: 'KKKKKKKKKKKKKKKAIAI', pack: 'by @pedro.reiso', keepScale: true })
+						break
+
+						case 'piroca':
+						case 'adult':
+						case 'adulto':
+						await kill.sendImageAsSticker(from, 'https://scontent-gig2-1.xx.fbcdn.net/v/t1.6435-9/94154063_2573896732825345_7319508434351554560_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=Pexr61UAEHkAX-PDb_P&_nc_ht=scontent-gig2-1.xx&oh=8630ff0f9330523ee5e7ebaa23b4f8f8&oe=6095FA3B', { author: 'KKKKKKKKKKKKKKKAIAI', pack: 'by @pedro.reiso', keepScale: true })
+						break
+
+						case 'porn':
+						case 'porno':
+						case 'hentai':
+						await kill.sendImageAsSticker(from, 'https://scontent-gig2-1.xx.fbcdn.net/v/t1.6435-9/94154063_2573896732825345_7319508434351554560_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=Pexr61UAEHkAX-PDb_P&_nc_ht=scontent-gig2-1.xx&oh=8630ff0f9330523ee5e7ebaa23b4f8f8&oe=6095FA3B', { author: 'KKKKKKKKKKKKKKKAIAI', pack: 'by @pedro.reiso', keepScale: true })
+						break
+
+						case 'changelog':
+						await kill.sendText(from, `*changelog::*\n\n── *(add)* layout like frost - voltando as antiga 😎 (qm viveu sabe)  \n── *(add)* filmes do drive  \n── *(add)* comando /about  \n── *(add)* novas curiosidades (agora são 1563)  \n── *(fix)* escrita de vr kjkkkkkk  \n── *(fix)* alguns bugs  \n── *(rem)* +18, em respeito à legislação brasileira  \n── *(fix)* tempo do antiflood diminuido (agora eu respondo de 5 em 5 segundos)  \n\n*${prefix}breve* para saber as brevidades que serão publicadas em neve :)`)
+						break
+
+						case 'breve':
+						await kill.sendText(from, `*em breve::*\n── como fazer filtros para instagram utilizando apenas um celular  \n── utilidades pra vv \n compartilha o bot aí po, bjao s2`)
+						break
 
         case 'admins':
 			if (!isGroupMsg) return kill.reply(from, mess.error.Gp, id)
@@ -2993,9 +3027,75 @@ module.exports = kconfig = async (kill, message) => {
 			break*/
 
 
+			case 'filmes':
+			await kill.sendText(from, '*filmes::*\n\n/a5passosdevc – A Cinco Passos de Você \n/avesderapina – Aves de Rapina Arlequina e sua Emancipação Fantabulosa\n/clouds – Clouds\n/comamorsimon – Com Amor, Simon\n/comoeueraantesdevc – Como Eu Era Antes de Você\n/mulan – Mulan\n/paratodososgarotosquejaamei – Para Todos os Garotos que Já Amei\n/scooby – Scooby! - O Filme\n/simplesmenteacontece – Simplesmente Acontece\n/sonic – Sonic - O Filme')
+			break
+
+			case 'clouds':
+			await kill.sendText(from, '── *clouds (2020)*\n\nClouds é baseado no livro ""Fly a Little Higher"", de Laura Sobiech. É a história de Zach Sobiech (Fin Argus), um adolescente diagnosticado com uma forma rara de câncer no osso, buscando uma maneira de inspirar outras pessoas enquanto luta com o pouco tempo de vida que lhe resta.\n\nhttps://link-to.net/178008/clouds')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'a5passosdevc':
+			await kill.sendText(from, '── a cinco passos de você\n\nNo enredo de A Cinco Passos de Você, Stella Grant (Haley Lu Richardson), aos dezesseis anos de idade, é diferente da maior parte dos adolescentes: devido a uma fibrose cística, ela passa muito tempo no hospital, entre tratamentos e acompanhamento médico. Um dia, conhece Will Newman (Cole Sprouse), garoto que sofre da mesma doença que ela. A atração é imediata, porém os dois são obrigados a manter distância um do outro por questões de saúde. Enquanto Stella pensa em quebrar as regras e se aproximar do garoto da sua vida, Will começa a se rebelar contra o sistema e recusar o rigoroso tratamento.\n\nhttps://link-to.net/178008/a5passosdevc')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'avesderapina':
+			await kill.sendText(from, '── aves de rapina\n\nEm Aves de Rapina - Arlequina e sua Emancipação Fantabulosa, Arlequina (Margot Robbie), Canário Negro (Jurnee Smollett-Bell), Caçadora (Mary Elizabeth Winstead), Cassandra Cain e a policial Renée Montoya (Rosie Perez) formam um grupo inusitado de heroínas. Quando um perigoso criminoso começa a causar destruição em Gotham, as cinco mulheres precisam se unir para defender a cidade.\n\nhttps://link-to.net/178008/avesderapina')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'comamorsimon':
+			await kill.sendText(from, '── com amor, simon\n\nAos 17 anos, Simon Spier (Nick Robinson) aparentemente leva uma vida comum, mas sofre por esconder um grande segredo: nunca revelou ser gay para sua família e amigos. E tudo fica mais complicado quando ele se apaixona por um dos colegas de escola, anônimo, com quem troca confidências diariamente via internet.\n\nhttps://link-to.net/178008/comamorsimon')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'comoeueraantesdevc':
+			await kill.sendText(from, '── como eu era antes de você\n\nEm Como Eu Era Antes de Você, o rico e bem sucedido Will (Sam Claflin) leva uma vida repleta de conquistas, viagens e esportes radicais até ser atingido por uma moto. O acidente o torna tetraplégico, obrigando-o a permanecer em uma cadeira de rodas. A situação o torna depressivo e extremamente cínico, para a preocupação de seus pais (Janet McTeer e Charles Dance). É neste contexto que Louisa Clark (Emilia Clarke) é contratada para cuidar de Will. De origem modesta, com dificuldades financeiras e sem grandes aspirações na vida, ela faz o possível para melhorar o estado de espírito de Will e, aos poucos, acaba se envolvendo com ele.\n\nhttps://link-to.net/178008/comoeueraantesdevc')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'mulan':
+			await kill.sendText(from, '── mulan (2020)\n\nEm Mulan, Hua Mulan (Liu Yifei) é a espirituosa e determinada filha mais velha de um honrado guerreiro. Quando o Imperador da China emite um decreto que um homem de cada família deve servir no exército imperial, Mulan decide tomar o lugar de seu pai, que está doente. Assumindo a identidade de Hua Jun, ela se disfarça de homem para combater os invasores que estão atacando sua nação, provando-se uma grande guerreira.\n\nhttps://link-to.net/178008/mulan')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'paratodososgarotosquejaamei':
+			await kill.sendText(from, '── para todos os garotos que já amei\n\nLara Jean Song Covey (Lana Condor) escreve cartas de amor secretas para todos os seus antigos paqueras. Um dia, essas cartas são misteriosamente enviadas para os meninos sobre os quem ela escreve, virando sua vida de cabeça para baixo.\n\nhttps://link-to.net/178008/paratodososgarotosquejaamei')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'scooby':
+			await kill.sendText(from, '── scooby - o filme (2020)\n\nSCOOBY! O Filme é uma história de origem dos famosos personagens da série animada da Hanna Barbera. Salsicha e Scooby tem uma conexão instantânea envolvendo comida em seu primeiro encontro, e logo se unem aos jovens detetives Fred, Velma e Daphne para formar a Mistério S/A. Só que, após resolver centenas de casos, eles encontram o desafio de impedir o ""apocãolipse"", que virá quando o fantasma do cão Cerberus for liberado no mundo.\n\nhttps://link-to.net/178008/scooby')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'simplesmenteacontece':
+			await kill.sendText(from, '── simplesmente acontece\n\nOs jovens britânicos Rosie (Lily Collins) e Alex (Sam Claflin) são amigos inseparáveis desde a infância, experimentando juntos as dificuldades amorosas, familiares e escolares. Embora exista uma atração entre eles, os dois mantém a amizade acima de tudo. Um dia, Alex decide aceitar um convite para estudar medicina em Harvard, nos Estados Unidos. A distância entre eles faz com que nasçam os primeiros segredos, enquanto cada um encontra outros namorados e namoradas. Mas o destino continua atraindo Rosie e Alex um ao outro.\n\nhttps://link-to.net/178008/simplesmenteacontece')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+			case 'sonic':
+			await kill.sendText(from, '── sonic - o filme (2020)\n\nSonic, o porco-espinho azul mais famoso do mundo, se junta com os seus amigos para derrotar o terrível Doutor Eggman, um cientista louco que planeja dominar o mundo, e o Doutor Robotnik, responsável por aprisionar animais inocentes em robôs.\n\nhttps://link-to.net/178008/sonic')
+			await kill.sendText(from, 'como passar pelo encurtador:\niOS: https://youtu.be/z3GOvvl6xAg\nandroid: https://youtu.be/ltWXNOhUlao\nwindows: https://youtu.be/ekWSTqtuTpM')
+			await kill.sendText(from, 'compartilhe o bot com os amigos :)\nhttps://wa.link/tjk172')
+			break
+
+
+
         default:
             if (isCmd) {
-                await kill.reply(from, `⚠️ O comando ${prefix}${command} não existe, reveja nossa lista em ${prefix}menu para continuar.`, id)
+                await kill.reply(from, `⚠️ O comando ${prefix}${command} não existe, reveja nossa lista em ${prefix}menu para continuar.\n\n\n\n@pedro.reiso`, id)
             }
             break
 
